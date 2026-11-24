@@ -4,91 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=BBH+Bogle&family=Bitcount+Prop+Single:wght@100..900&family=Geomini:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@300..700&family=VT323&display=swap" rel="stylesheet">
 </head>
-    <script>
+<body> 
+<div class="general-container">
 
-        var humanScore=0;
-        var computerScore=0;
-        var round=0;
+    <div class="title">   
+        <h1>Rock Paper Scissors Game</h1>
+        <h2>by The odin Project</h2>
+    </div>
 
-        function getComputerChoice(){
-            var random =Math.floor(Math.random()*3);
-            switch(random){
-                case 1: return 'rock'
-                break;
-                case 2: return'paper'
-                break;
-                default:return 'scissors'                
-             }
-        }
+    <div class="score">
+        <div class="round" id="roundGeneral">Round:</div>
+        <div class="huma_score" id="humaScore">Player:</div>
+        <div class="compute_score" id="computerScore">Computer:</div>
+    </div>
+    <div class="play" id="play_container">
+        <h1 id="text1">Start the game</h1>
+        <h2 id="text2">Click in the button</h2>
+        <button><img src="img/play.png" alt="play" id="play"></button>
+    </div>
+    
 
-        function getHumanChoice(){
-            const choice = prompt('Welcome to Project: Rock Paper Scissors -  Please enter your choice (rock-paper-scissors)');
-            return choice.toLocaleLowerCase();
-        }
-
-        function checkScore(){
-            if(humanScore> computerScore){
-                return `HUMAN WIN!!!`
-            }else if(humanScore> computerScore){
-                return `COMPUTER WIN!!!`
-            }else{
-                return `DRAW GAME--- PLAY AGAIN!!!`
-            }
-        }
-
-        function playGame(){
-            function playRound(humaChoice,computerChoise){
-            //draw
-            if(humaChoice === computerChoise){
-                round++
-                return `Round:${round} - Human choice: ${humaChoice} vs Computer Choice: ${computerChoise}\nDraw game - Try again \nScore: ${humanScore} - ${computerScore}`;
-                //huma lose
-            }else if(humaChoice==='paper' && computerChoise ==='scissors'){
-                computerScore++;
-                round++;
-                return `Round:${round} - Human choice: ${humaChoice} vs Computer Choice: ${computerChoise}\nComputer Win - You Lose \nScore: ${humanScore} - ${computerScore}`;
-                 
-            }else if(humaChoice==='rock' && computerChoise ==='paper'){
-                computerScore++;
-                round++;
-                return `Round:${round} - Human choice: ${humaChoice} vs Computer Choice: ${computerChoise}\nComputer Win - You Lose \nScore: ${humanScore} - ${computerScore}`;
-            }else if(humaChoice==='scissor' && computerChoise ==='rock'){
-                computerScore++;
-                round++;
-                return `Round:${round} - Human choice: ${humaChoice} vs Computer Choice: ${computerChoise}\nComputer Win - You Lose \nScore: ${humanScore} - ${computerScore}`;
-                
-                //huma win
-            }else if(humaChoice==='rock' && computerChoise ==='scissors'){
-                humanScore++;
-                round++;
-                return `Round:${round} - Human choice: ${humaChoice} vs Computer Choice: ${computerChoise}\nHuman Win - You Win \nScore: ${humanScore} - ${computerScore}`;
-                
-            }else if(~(humaChoice==='scissors' && computerChoise ==='paper')){
-                humanScore++;
-                round++;
-                return `Round:${round} - Human choice: ${humaChoice} vs Computer Choice: ${computerChoise}\nHuman Win - You Win \nScore ${humanScore} - ${computerScore}`;
-                
-            }else if(~(humaChoice==='paper' && computerChoise ==='rock')){
-                humanScore++;
-                round++;
-                return `Round:${round} - Human choice: ${humaChoice} vs Computer Choice: ${computerChoise}\nHuman Win - You Win \nScore: ${humanScore} - ${computerScore}`;              
-            }
-        }
-         
-        while(humanScore>=3 ||computerScore>=3 || round<5){
-            const humanSelection = getHumanChoice();
-            const computerSelection = getComputerChoice();
-
-            console.log(playRound(humanSelection,computerSelection))
-
-            if(humanScore>=3 ||computerScore >=3 || round>4){
-                console.log(checkScore())
-            }
-        }
-    }
-        playGame()
-    </script>
-<body>
+</div>
+<dialog id="modal">
+    <h1>Select your choice</h2>
+    <div class="choise-container" id="choiseContainer">
+        
+        <button><img src="img/rock.png" alt="Rock" id="op1"></button>
+        <button><img src="img/paper.png" alt="Paper" id="op2"></button>
+        <button><img src="img/scissors.png" alt="Scissor" id="op3"></button>
+    </div>
+</dialog>
 </body>
+<script src="rockPaperScissors.js"></script>
 </html>
